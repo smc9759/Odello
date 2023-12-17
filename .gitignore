@@ -1,0 +1,5 @@
+*.opendb
+*.db
+*.ipch
+*.vsidx
+*.tlog
