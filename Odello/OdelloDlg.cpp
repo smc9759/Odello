@@ -145,14 +145,46 @@ void COdelloDlg::OnPaint()
 	{
 		CDialogEx::OnPaint();
 	}
+#define MAX_COLUMN		6
+#define MAX_ROW			5
+#define TOP_MARGINS		80
+#define SIDE_MARGINS	130
+#define SPACING			60
+#define NUMBER_OF_ROWS (5 + 1)
+#define NUMBER_OF_COLUMNS (5 + 1)
+#define ROW_LENGTH		360
+#define COLUMN_LENGTH	360
+#define LINE_THICKNESS	4.0f
 
 	Graphics graphics(dc);
 
-	Pen BluePen(Color(255, 0, 0, 255), 20.0f);
-	Pen BlackPen(Color(128, 0, 0, 0), 20.0f);
+	Pen BluePen(Color(255, 0, 0, 255), LINE_THICKNESS);
+	Pen BlackPen(Color(128, 0, 0, 0), LINE_THICKNESS);
+	Pen GreyPen(Color(128, 128, 128, 128), LINE_THICKNESS);
 
-	graphics.DrawLine(&BluePen, Point(10, 10), Point(200, 200));
-	graphics.DrawLine(&BlackPen, 200, 10, 10, 200);
+	int x_start_point = 0;
+	int y_start_point = 0;
+	int x_end_point = 0;
+	int y_end_point = 0;
+
+	//DRAW LINES - ROWS
+	for (int draw_lines = 1; draw_lines < NUMBER_OF_ROWS; draw_lines++)
+	{
+		x_start_point = SIDE_MARGINS;
+		y_start_point = TOP_MARGINS + (SPACING * draw_lines);
+		x_end_point = SIDE_MARGINS + ROW_LENGTH;
+		y_end_point = TOP_MARGINS + (SPACING * draw_lines);
+		graphics.DrawLine(&GreyPen, Point(x_start_point, y_start_point), Point(x_end_point, y_end_point));
+	}
+	//DRAW LINES - COLUMN 
+	for (int draw_lines = 1; draw_lines < NUMBER_OF_COLUMNS; draw_lines++)
+	{
+		x_start_point = SIDE_MARGINS + (SPACING * draw_lines);
+		y_start_point = TOP_MARGINS;
+		x_end_point = SIDE_MARGINS + (SPACING * draw_lines);
+		y_end_point = TOP_MARGINS + COLUMN_LENGTH;
+		graphics.DrawLine(&GreyPen, Point(x_start_point, y_start_point), Point(x_end_point, y_end_point));
+	}
 }
 
 // 사용자가 최소화된 창을 끄는 동안에 커서가 표시되도록 시스템에서
