@@ -156,11 +156,11 @@ void COdelloDlg::OnPaint()
 #define COLUMN_LENGTH	360
 #define LINE_THICKNESS	4.0f
 
-	Graphics graphics(dc);
+	Gdiplus::Graphics graphics(dc);
 
-	Pen BluePen(Color(255, 0, 0, 255), LINE_THICKNESS);
-	Pen BlackPen(Color(128, 0, 0, 0), LINE_THICKNESS);
-	Pen GreyPen(Color(128, 128, 128, 128), LINE_THICKNESS);
+	Gdiplus::Pen BluePen(Gdiplus::Color(255, 0, 0, 255), LINE_THICKNESS);
+	Gdiplus::Pen BlackPen(Gdiplus::Color(128, 0, 0, 0), LINE_THICKNESS);
+	Gdiplus::Pen GreyPen(Gdiplus::Color(128, 128, 128, 128), LINE_THICKNESS);
 
 	int x_start_point = 0;
 	int y_start_point = 0;
@@ -174,7 +174,7 @@ void COdelloDlg::OnPaint()
 		y_start_point = TOP_MARGINS + (SPACING * draw_lines);
 		x_end_point = SIDE_MARGINS + ROW_LENGTH;
 		y_end_point = TOP_MARGINS + (SPACING * draw_lines);
-		graphics.DrawLine(&GreyPen, Point(x_start_point, y_start_point), Point(x_end_point, y_end_point));
+		graphics.DrawLine(&GreyPen, Gdiplus::Point(x_start_point, y_start_point), Gdiplus::Point(x_end_point, y_end_point));
 	}
 	//DRAW LINES - COLUMN 
 	for (int draw_lines = 1; draw_lines < NUMBER_OF_COLUMNS; draw_lines++)
@@ -183,7 +183,7 @@ void COdelloDlg::OnPaint()
 		y_start_point = TOP_MARGINS;
 		x_end_point = SIDE_MARGINS + (SPACING * draw_lines);
 		y_end_point = TOP_MARGINS + COLUMN_LENGTH;
-		graphics.DrawLine(&GreyPen, Point(x_start_point, y_start_point), Point(x_end_point, y_end_point));
+		graphics.DrawLine(&GreyPen, Gdiplus::Point(x_start_point, y_start_point), Gdiplus::Point(x_end_point, y_end_point));
 	}
 }
 

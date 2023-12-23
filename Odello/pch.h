@@ -12,6 +12,6 @@
 
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus")
-using namespace Gdiplus;
+
 
 #endif //PCH_H

@@ -44,9 +44,9 @@ BOOL COdelloApp::InitInstance()
 	// 사용하도록 지정하는 경우, Windows XP 상에서 반드시 InitCommonControlsEx()가 필요합니다.
 	// InitCommonControlsEx()를 사용하지 않으면 창을 만들 수 없습니다.
 
-	GdiplusStartupInput  gdiplusStartupInput;
+	Gdiplus::GdiplusStartupInput  gdiplusStartupInput;
 
-	if (::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL) != Ok)
+	if (Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL) != Gdiplus::Ok)
 	{
 		AfxMessageBox(_T("GDI+ 라이브러리의 초기화에 실패하였습니다!"));
 		return FALSE;
@@ -118,6 +118,6 @@ BOOL COdelloApp::InitInstance()
 int COdelloApp::ExitInstance()
 {
 	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
-	::GdiplusShutdown(gdiplusToken);
+	Gdiplus::GdiplusShutdown(gdiplusToken);
 	return CWinApp::ExitInstance();
 }
